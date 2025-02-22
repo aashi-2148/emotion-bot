@@ -1,5 +1,10 @@
 print("hello world")
 import ollama
 
-response = ollama.chat("llama2", messages=[{"role": "user", "content": "Tell me a joke"}])
-print(response["message"]["content"])
+flag = 0
+while flag != 1: 
+    x = input("You :")
+    response = ollama.chat("llama2", messages=[{"role": "user", "content": x}])
+    print(response["message"]["content"])
+    if response["message"]["content"] == "Goodbye":
+        flag = 1
