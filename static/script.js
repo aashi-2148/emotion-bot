@@ -11,7 +11,7 @@ function sendMessage() {
     chatbox.scrollTop = chatbox.scrollHeight;
 
     // Show Typing Animation
-    let typingIndicator = `<p class="bot-message" id="typing"><b></b> <span class="typing"></span></p>`;
+    let typingIndicator = `<p class="bot-message" id="typing"><b>s</b> <span class="typing"></span></p>`;
     chatbox.innerHTML += typingIndicator;
     chatbox.scrollTop = chatbox.scrollHeight;
 
@@ -27,7 +27,7 @@ function sendMessage() {
         document.getElementById("typing").remove();
 
         // Add Bot Response
-        let botMessage = `<p class="bot-message"><b>Bot:</b> ${data.response}</p>`;
+        let botMessage = `<p class="bot-message"><b></b> ${data.response}</p>`;
         chatbox.innerHTML += botMessage;
         chatbox.scrollTop = chatbox.scrollHeight;
     });

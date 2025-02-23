@@ -2,7 +2,7 @@
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    background: radial-gradient(circle at 50% 50%, #0b3d91, #000d1a);
+    background: radial-gradient(circle at 50% 50%, #295f00, #151010);
     color: white;
     margin: 0;
     padding: 0;
@@ -10,9 +10,9 @@ body {
 
 /* Chat Container */
 .chat-container {
-    width: 50%;
-    margin: 40px auto;
-    background: rgba(22, 42, 90, 0.8);
+    width: 80%;
+    margin: 2% auto;
+    background: rgba(0, 83, 1, 0.8);
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
@@ -20,13 +20,13 @@ body {
 
 /* Chatbox */
 .chatbox {
-    height: 400px;
+    height: 600px;
     overflow-y: auto;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(41, 39, 39, 0.8);
     padding: 15px;
     color: white;
     border-radius: 10px;
-    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.5);
+    box-shadow: inset 0 0 10px rgba(35, 190, 0, 0.5);
 }
 
 /* Messages */
@@ -44,15 +44,15 @@ body {
 
 .user-message {
     justify-content: flex-end;
-    color: #00c3ff;
-    background: rgba(0, 195, 255, 0.2);
+    color: #ffffff;
+    background: rgba(94, 122, 99, 0);
     align-self: flex-end;
 }
 
 .bot-message {
     justify-content: flex-start;
-    color: #00ff99;
-    background: rgba(0, 255, 153, 0.2);
+    color: #ffffff;
+    background: rgba(106, 76, 72, 0);
     align-self: flex-start;
 }
 
@@ -60,13 +60,13 @@ body {
 .user-message::before {
     content: "You: ";
     font-weight: bold;
-    color: #00c3ff;
+    color: #0ed900;
 }
 
 .bot-message::before {
     content: "Bot: ";
     font-weight: bold;
-    color: #00ff99;
+    color: #606060;
 }
 
 /* Typing Animation */
@@ -108,20 +108,22 @@ body {
 
 #userInput {
     flex-grow: 1;
-    padding: 12px;
+    margin-top: 20px;
+    padding: 20px;
     border: none;
     border-radius: 10px;
     font-size: 16px;
     color: white;
     background: rgba(255, 255, 255, 0.1);
     outline: none;
+    width : 80%;
 }
 
 button {
     padding: 12px 18px;
     border: none;
     border-radius: 10px;
-    background: #00c3ff;
+    background: #00e222;
     color: white;
     font-size: 16px;
     margin-left: 10px;
