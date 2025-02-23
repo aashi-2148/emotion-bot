@@ -1,0 +1,134 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: radial-gradient(circle at 50% 50%, #0b3d91, #000d1a);
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Chat Container */
+.chat-container {
+    width: 50%;
+    margin: 40px auto;
+    background: rgba(22, 42, 90, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Chatbox */
+.chatbox {
+    height: 400px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    color: white;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Messages */
+.user-message, .bot-message {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s ease-in-out forwards;
+    padding: 8px 12px;
+    border-radius: 8px;
+    max-width: 80%;
+}
+
+.user-message {
+    justify-content: flex-end;
+    color: #00c3ff;
+    background: rgba(0, 195, 255, 0.2);
+    align-self: flex-end;
+}
+
+.bot-message {
+    justify-content: flex-start;
+    color: #00ff99;
+    background: rgba(0, 255, 153, 0.2);
+    align-self: flex-start;
+}
+
+/* Fixes for text formatting */
+.user-message::before {
+    content: "You: ";
+    font-weight: bold;
+    color: #00c3ff;
+}
+
+.bot-message::before {
+    content: "Bot: ";
+    font-weight: bold;
+    color: #00ff99;
+}
+
+/* Typing Animation */
+.typing {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+}
+.typing span {
+    width: 6px;
+    height: 6px;
+    background-color: #00ff99;
+    border-radius: 50%;
+    animation: typingBlink 1.5s infinite ease-in-out;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes typingBlink {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* Improved Input Box */
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+}
+
+#userInput {
+    flex-grow: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #00c3ff;
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #009acb;
+}
