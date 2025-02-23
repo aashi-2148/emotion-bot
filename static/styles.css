@@ -1,32 +1,54 @@
+/* Palette */
+:root {
+    --primary-color: #5e75a0; /* Muted pastel blue - User messages, interactive elements */
+    --secondary-color: #f4a7a1; /* Soft warm coral - Chat container, buttons */
+    --tertiary-color: #F8DE7E; /* Gentle butter yellow - Bot messages */
+    --dark-color: #474b6e; /* Deep desaturated indigo - Text, input box */
+    --light-color: #ffffff; /* Soft off-white - General text color */
+    --background-color: #433754; /* Muted lavender - Page background */
+    --chatbox-background: #d0e7d2; /* Soft pastel green - Chatbox background */
+    --shadow-color: rgb(158, 167, 225); /* Subtle muted shadow - Depth effects */
+    --input-background: rgba(255, 255, 255, 0.8); /* Slightly opaque white - Input field */
+    --button-hover: #C6DEF1; /* Light sky blue - Button hover state */
+}
+
 /* General Styling */
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    background: radial-gradient(circle at 50% 50%, #295f00, #151010);
-    color: white;
+    background: radial-gradient(circle at 50% 50%, var(--secondary-color), var(--dark-color));
+    color: var(--light-color);
     margin: 0;
     padding: 0;
+    background-color: var(--background-color);
+    opacity: 0.8;
+    background-image: linear-gradient(30deg, var(--secondary-color) 12%, transparent 12.5%, transparent 87%, var(--secondary-color) 87.5%, var(--secondary-color)),
+                      linear-gradient(150deg, var(--secondary-color) 12%, transparent 12.5%, transparent 87%, var(--secondary-color) 87.5%, var(--secondary-color)),
+                      linear-gradient(60deg, var(--shadow-color) 25%, transparent 25.5%, transparent 75%, var(--shadow-color) 75%, var(--shadow-color));
+    background-size: 20px 35px;
 }
 
 /* Chat Container */
 .chat-container {
     width: 80%;
     margin: 2% auto;
-    background: rgba(0, 83, 1, 0.8);
+    background: var(--secondary-color);
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px var(--shadow-color);
+    opacity : 1;
 }
 
 /* Chatbox */
 .chatbox {
     height: 600px;
     overflow-y: auto;
-    background: rgba(41, 39, 39, 0.8);
+    background: var(--chatbox-background);
     padding: 15px;
-    color: white;
+    color: var(--dark-color);
     border-radius: 10px;
-    box-shadow: inset 0 0 10px rgba(35, 190, 0, 0.5);
+    box-shadow: inset 0 0 10px var(--shadow-color);
+    opacity : 1;
 }
 
 /* Messages */
@@ -44,15 +66,15 @@ body {
 
 .user-message {
     justify-content: flex-end;
-    color: #ffffff;
-    background: rgba(94, 122, 99, 0);
+    color: var(--light-color);
+    background: var(--primary-color);
     align-self: flex-end;
 }
 
 .bot-message {
     justify-content: flex-start;
-    color: #ffffff;
-    background: rgba(106, 76, 72, 0);
+    color: var(--dark-color);
+    background: var(--tertiary-color);
     align-self: flex-start;
 }
 
@@ -60,13 +82,13 @@ body {
 .user-message::before {
     content: "You: ";
     font-weight: bold;
-    color: #0ed900;
+    color: var(--tertiary-color);
 }
 
 .bot-message::before {
     content: "Bot: ";
     font-weight: bold;
-    color: #606060;
+    color: var(--primary-color);
 }
 
 /* Typing Animation */
@@ -78,7 +100,7 @@ body {
 .typing span {
     width: 6px;
     height: 6px;
-    background-color: #00ff99;
+    background-color: var(--primary-color);
     border-radius: 50%;
     animation: typingBlink 1.5s infinite ease-in-out;
 }
@@ -102,7 +124,7 @@ body {
     align-items: center;
     margin-top: 15px;
     padding: 10px;
-    background: rgba(0, 0, 0, 0.6);
+    background: var(--dark-color);
     border-radius: 15px;
 }
 
@@ -113,18 +135,18 @@ body {
     border: none;
     border-radius: 10px;
     font-size: 16px;
-    color: white;
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--dark-color);
+    background: var(--input-background);
     outline: none;
-    width : 80%;
+    width: 80%;
 }
 
 button {
     padding: 12px 18px;
     border: none;
     border-radius: 10px;
-    background: #00e222;
-    color: white;
+    background: var(--secondary-color);
+    color: var(--dark-color);
     font-size: 16px;
     margin-left: 10px;
     cursor: pointer;
@@ -132,5 +154,5 @@ button {
 }
 
 button:hover {
-    background: #009acb;
+    background: var(--button-hover);
 }
