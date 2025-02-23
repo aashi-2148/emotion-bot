@@ -11,7 +11,7 @@ function sendMessage() {
     chatbox.scrollTop = chatbox.scrollHeight;
 
     // Show Typing Animation
-    let typingIndicator = `<p class="bot-message" id="typing"><b>s</b> <span class="typing"></span></p>`;
+    let typingIndicator = `<p class="bot-message" id="typing"><b>typing...</b> <span class="typing"></span></p>`;
     chatbox.innerHTML += typingIndicator;
     chatbox.scrollTop = chatbox.scrollHeight;
 
