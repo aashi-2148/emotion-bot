@@ -19,7 +19,9 @@ def ask_ollama(prompt):
 
     return response['message']['content']
 
-
+def analyse_sentiment(prompt):
+    sentiment = ollama.sentiment_analysis(prompt)
+    return jsonify({"sentiment"})
 
 @app.route("/")
 def home():
