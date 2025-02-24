@@ -1,3 +1,4 @@
+/* Palette */
 :root {
     --primary-color: #6fa8dc; /* Light blue */
     --secondary-color: #ff9aa2; /* Soft pink */
@@ -11,8 +12,9 @@
     --button-hover: #ffcc99; /* Peach */
 }
 
+/* General Styling */
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     color: var(--light-color);
     margin: 0;
@@ -21,7 +23,7 @@ body {
     overflow: hidden;
 }
 
-
+/* Animated Space Background */
 .stars {
     position: fixed;
     top: 0;
@@ -33,6 +35,7 @@ body {
     z-index: -2;
 }
 
+/* Natural Twinkling Stars */
 .stars::before {
     content: "";
     position: absolute;
@@ -63,6 +66,7 @@ body {
     50% { opacity: 1; }
 }
 
+/* Floating Cartoon Planet */
 .planet {
     position: absolute;
     width: 150px;
@@ -87,6 +91,7 @@ body {
     transform: rotate(20deg);
 }
 
+/* Spaceship Animation */
 .spaceship {
     position: absolute;
     width: 80px;
@@ -116,13 +121,13 @@ body {
     }
 }
 
-
+/* Floating Animation */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
 }
 
-
+/* Chat Container */
 .chat-container {
     width: 80%;
     max-width: 600px;
@@ -156,7 +161,17 @@ body {
     border-radius: 10px;
     background: var(--input-background);
     color: var(--dark-color);
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.user-message::before {
+    content: "You: ";
+    font-weight: bold;
+}
+
+.bot-message::before {
+    content: "Bot: ";
+    font-weight: bold;
 }
 
 button {
@@ -168,7 +183,7 @@ button {
     background: var(--primary-color);
     color: var(--light-color);
     cursor: pointer;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: background 0.3s ease;
 }
 
