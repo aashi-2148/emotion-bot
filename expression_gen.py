@@ -4,6 +4,7 @@ import re
 from nltk import pos_tag, word_tokenize
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
+from package import *
 
 # Download VADER model
 nltk.download('vader_lexicon')
@@ -16,7 +17,7 @@ sia = SentimentIntensityAnalyzer()
 lemmatizer = WordNetLemmatizer()
 
 # Sample text
-text = "I'm so happy about this! *smiling brightly*"
+text = ask_ollama(__package__.prompt)
 
 action_emotion_map = {
     'affirm': ['nod', 'agree', 'consent', 'acknowledge'],
@@ -48,9 +49,9 @@ def simplify_action(action):
     lemmatized = [lemmatizer.lemmatize(word, get_wordnet_pos(tag)) for word, tag in tagged]
     return " ".join(lemmatized)
 
-def analyse_sentiment(text):
-    scores = sia.polarity_scores(text)
-    return (scores)
+#def analyse_sentiment(text):
+    #scores = sia.polarity_scores(text)
+   # return (scores)
 
 def map_scores(scores):
     if scores["compound"] >= 0.05:
