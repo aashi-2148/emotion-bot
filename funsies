@@ -1,0 +1,9 @@
+prompt = "hi"
+while prompt != "exit":
+    prompt = input("You: ")
+    response = ask_ollama(prompt)
+    print("Assistant:", response)
+    print("Sentiment:", analyse_sentiment(prompt))
+    print(return_info(response))
+    if prompt == "exit":
+        break

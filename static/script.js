@@ -28,7 +28,7 @@ function sendMessage() {
         document.getElementById("typing").remove();
 
         // Sanitize Bot Response
-        let botResponse = data.response.replace(/\*[^\*]+\*/g, "").replace(/[\p{Emoji}]/gu, "").replace("[INST]","").replace("[INST:","");
+        let botResponse = data.response;
         fetch("/get_sentiment", {
             method: "POST",
             body: JSON.stringify({ message: botResponse }),
@@ -64,4 +64,9 @@ function handleKeyPress(event) {
     if (event.key === "Enter") {
         sendMessage();
     }
+}
+
+function playResponse() {
+    let audio = new Audio("/static/response.mp3");
+    audio.play();
 }
