@@ -1,159 +1,183 @@
 /* Palette */
 :root {
-    --primary-color: #5e75a0; /* Muted pastel blue - User messages, interactive elements */
-    --secondary-color: #f4a7a1; /* Soft warm coral - Chat container, buttons */
-    --tertiary-color: #F8DE7E; /* Gentle butter yellow - Bot messages */
-    --dark-color: #474b6e; /* Deep desaturated indigo - Text, input box */
-    --light-color: #ffffff; /* Soft off-white - General text color */
-    --background-color: #433754; /* Muted lavender - Page background */
-    --chatbox-background: #d0e7d2; /* Soft pastel green - Chatbox background */
-    --shadow-color: rgb(158, 167, 225); /* Subtle muted shadow - Depth effects */
-    --input-background: rgba(255, 255, 255, 0.8); /* Slightly opaque white - Input field */
-    --button-hover: #C6DEF1; /* Light sky blue - Button hover state */
+    --primary-color: #6fa8dc; /* Light blue */
+    --secondary-color: #ff9aa2; /* Soft pink */
+    --tertiary-color: #ffd966; /* Bright yellow */
+    --dark-color: #4a4e69; /* Dark blue-gray */
+    --light-color: #ffffff; /* White */
+    --background-color: #1a1a2e; /* Deep space blue */
+    --chatbox-background: #f0e6f6; /* Soft lavender */
+    --shadow-color: rgba(255, 255, 255, 0.3); /* Soft white shadow */
+    --input-background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    --button-hover: #ffcc99; /* Peach */
 }
 
 /* General Styling */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font */
     text-align: center;
-    background: radial-gradient(circle at 50% 50%, var(--secondary-color), var(--dark-color));
     color: var(--light-color);
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
-    opacity: 0.8;
-    background-image: linear-gradient(30deg, var(--secondary-color) 12%, transparent 12.5%, transparent 87%, var(--secondary-color) 87.5%, var(--secondary-color)),
-                      linear-gradient(150deg, var(--secondary-color) 12%, transparent 12.5%, transparent 87%, var(--secondary-color) 87.5%, var(--secondary-color)),
-                      linear-gradient(60deg, var(--shadow-color) 25%, transparent 25.5%, transparent 75%, var(--shadow-color) 75%, var(--shadow-color));
-    background-size: 20px 35px;
-    opacity : 1;
+    overflow: hidden;
+}
+
+/* Animated Space Background */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, #1a1a2e, #0f3460);
+    overflow: hidden;
+    z-index: -2;
+}
+
+/* Natural Twinkling Stars */
+.stars::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, white 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: twinkle 3s infinite;
+}
+
+.stars::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, white 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: twinkle 5s infinite;
+    opacity: 0.7;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* Floating Cartoon Planet */
+.planet {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, #ffcc99, #ff9966);
+    border-radius: 50%;
+    top: 10%;
+    left: 5%;
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.8);
+    animation: float 6s ease-in-out infinite;
+}
+
+.planet::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 15px;
+    background: rgba(255, 200, 100, 0.6);
+    border-radius: 50%;
+    top: 50%;
+    left: -10px;
+    transform: rotate(20deg);
+}
+
+/* Spaceship Animation */
+.spaceship {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: url('spaceship.png') no-repeat center center; /* Add a spaceship image */
+    background-size: contain;
+    top: 0;
+    left: 0;
+    animation: floatRandom 20s infinite linear; /* Slowed down animation */
+}
+
+@keyframes floatRandom {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(calc(100vw - 80px), calc(100vh - 80px)) rotate(90deg);
+    }
+    50% {
+        transform: translate(calc(50vw - 40px), calc(50vh - 40px)) rotate(180deg);
+    }
+    75% {
+        transform: translate(calc(75vw - 60px), calc(25vh - 20px)) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
 }
 
 /* Chat Container */
 .chat-container {
     width: 80%;
-    margin: 2% auto;
-    background: var(--secondary-color);
-    border-radius: 15px;
+    max-width: 600px;
+    margin: 5% auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
     padding: 20px;
-    box-shadow: 0 0 15px var(--shadow-color);
-    opacity : 1;
+    box-shadow: 0 0 20px var(--shadow-color);
+    position: relative;
+    z-index: 1;
 }
 
 /* Chatbox */
 .chatbox {
-    height: 600px;
+    height: 300px;
     overflow-y: auto;
     background: var(--chatbox-background);
     padding: 15px;
     color: var(--dark-color);
-    border-radius: 10px;
-    box-shadow: inset 0 0 10px var(--shadow-color);
-    opacity : 1;
-}
-
-/* Messages */
-.user-message, .bot-message {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeIn 0.5s ease-in-out forwards;
-    padding: 8px 12px;
-    border-radius: 8px;
-    max-width: 80%;
-}
-
-.user-message {
-    justify-content: flex-end;
-    color: var(--light-color);
-    background: var(--primary-color);
-    align-self: flex-end;
-}
-
-.bot-message {
-    justify-content: flex-start;
-    color: var(--dark-color);
-    background: var(--tertiary-color);
-    align-self: flex-start;
-}
-
-/* Fixes for text formatting */
-.user-message::before {
-    content: "You: ";
-    font-weight: bold;
-    color: var(--tertiary-color);
-}
-
-.bot-message::before {
-    content: "Bot: ";
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-/* Typing Animation */
-.typing {
-    display: inline-flex;
-    gap: 4px;
-    align-items: center;
-}
-.typing span {
-    width: 6px;
-    height: 6px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    animation: typingBlink 1.5s infinite ease-in-out;
-}
-.typing span:nth-child(2) { animation-delay: 0.2s; }
-.typing span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes typingBlink {
-    0% { opacity: 0.3; }
-    50% { opacity: 1; }
-    100% { opacity: 0.3; }
-}
-
-/* Improved Input Box */
-.input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-    padding: 10px;
-    background: var(--dark-color);
     border-radius: 15px;
+    box-shadow: inset 0 0 10px var(--shadow-color);
+    margin-bottom: 15px;
 }
 
+/* Input and Button Styling */
 #userInput {
-    flex-grow: 1;
-    margin-top: 20px;
-    padding: 20px;
-    border: none;
+    width: calc(100% - 100px);
+    padding: 10px;
+    margin-top: 10px;
+    border: 2px solid var(--primary-color);
     border-radius: 10px;
-    font-size: 16px;
-    color: var(--dark-color);
     background: var(--input-background);
-    outline: none;
-    width: 80%;
+    color: var(--dark-color);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 button {
-    padding: 12px 18px;
+    width: 80px;
+    padding: 10px;
+    margin-top: 10px;
     border: none;
     border-radius: 10px;
-    background: var(--secondary-color);
-    color: var(--dark-color);
-    font-size: 16px;
-    margin-left: 10px;
+    background: var(--primary-color);
+    color: var(--light-color);
     cursor: pointer;
-    transition: background 0.3s;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    transition: background 0.3s ease;
 }
 
 button:hover {
     background: var(--button-hover);
+    color: var(--dark-color);
 }
