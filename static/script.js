@@ -28,38 +28,35 @@ function sendMessage() {
         document.getElementById("typing").remove();
 
         // Sanitize Bot Response
-        let botResponse = data.response.replace(/\*[^\*]+\*/g, "").replace(/[\p{Emoji}]/gu, "").replace("[INST]","");
-
+        let botResponse = data.response.replace(/\*[^\*]+\*/g, "").replace(/[\p{Emoji}]/gu, "").replace("[INST]","").replace("[INST:","");
+        fetch("/get_sentiment", {
+            method: "POST",
+            body: JSON.stringify({ message: botResponse }),
+            headers: { "Content-Type": "application/json" }
+        })
+        .then(sentiment => sentiment.json())
+        .then(data => {
+            if (data.sentiment == "Positive") {
+                document.querySelector(".chat-container").style.background = " rgba(245, 231, 184, 0.9)"
+                document.querySelector("#astraface").src = "/static/images/positive.png"
+               
+            }
+            else if (data.sentiment == "Negative") {
+                document.querySelector(".chat-container").style.background = " rgba(184, 218, 245, 0.9)"
+                document.querySelector("#astraface").src = "/static/images/negative.png"
+            }
+            else {
+                document.querySelector(".chat-container").style.background = " rgba(245, 184, 239, 0.9)"
+                document.querySelector("#astraface").src = "/static/images/neutral.png"
+            }   
+            
+        });
         // Add Bot Response
         let botMessage = `<p class="bot-message"><b></b> ${botResponse}</p>`;
         chatbox.innerHTML += botMessage;
         chatbox.scrollTop = chatbox.scrollHeight;
     });
-    fetch("/get_sentiment", {
-        method: "POST",
-        body: JSON.stringify({ message: userInput }),
-        headers: { "Content-Type": "application/json" }
-    })
-    .then(sentiment => sentiment.json())
-    .then(data => {
-        if (data.sentiment == "Positive") {
-            document.querySelector(".chat-container").style.background = " rgba(245, 231, 184, 0.9)"
-            document.querySelector("#astraface").src = "/static/images/positive.png"
-           
-        }
-        else if (data.sentiment == "Negative") {
-            document.querySelector(".chat-container").style.background = " rgba(184, 218, 245, 0.9)"
-            document.querySelector("#astraface").src = "/static/images/negative.png"
-        }
-        else if (data.sentiment == "Neutral") {
-            document.querySelector(".chat-container").style.background = " rgba(245, 184, 239, 0.9)"
-            document.querySelector("#astraface").src = "/static/images/neutral.png"
-        }   
-        else {
-            console.log("Error: Sentiment not found");
-        }
-        
-    });
+    
 }
 
 // Allow Enter Key to Send Message
