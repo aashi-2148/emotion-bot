@@ -103,15 +103,8 @@ def return_info(text):
     #generate final output
     return(f"Actions: {simplified_actions}, Sentiment: {connotation}, Emoji: {emoji}")
 
-prompt = "hi"
-while prompt != "exit":
-    prompt = input("You: ")
-    response = ask_ollama(prompt)
-    print("Assistant:", response)
-    print("Sentiment:", analyse_sentiment(prompt))
-    print("Info:", return_info(prompt))
-    if prompt == "exit":
-        break
+
+
 
 @app.route("/")
 def home():
@@ -126,5 +119,15 @@ def get_response():
     response = ask_ollama(user_input)
     return jsonify({"response": response})
 
+
+
+@app.route("/get_sentiment", methods=["POST"])
+def get_sentiment():
+    user_input = request.json.get("message")
+    if not user_input:
+        return jsonify({"response": "Please enter a message."})
+
+    response = analyse_sentiment(user_input)
+    return jsonify({"sentiment": response})
 if __name__ == "__main__":
     app.run(debug=True)
