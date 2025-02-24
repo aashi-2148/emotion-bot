@@ -26,6 +26,7 @@ body {
                       linear-gradient(150deg, var(--secondary-color) 12%, transparent 12.5%, transparent 87%, var(--secondary-color) 87.5%, var(--secondary-color)),
                       linear-gradient(60deg, var(--shadow-color) 25%, transparent 25.5%, transparent 75%, var(--shadow-color) 75%, var(--shadow-color));
     background-size: 20px 35px;
+    opacity : 1;
 }
 
 /* Chat Container */
