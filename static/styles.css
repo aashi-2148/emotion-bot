@@ -16,11 +16,19 @@
 body {
     font-family:Georgia, 'Times New Roman', Times, serif;
     text-align: center;
-    color: var(--light-color);
+    color: rgb(#000000);
     margin: 0;
     padding: 0;
     background-color: var(--background-color);
     overflow: hidden;
+}
+
+#astraface {
+    margin:20px;
+    margin-top: 0px;
+    border: #000000;
+    border-radius: 15%;
+    box-shadow: #f0e6f6;
 }
 
 /* Animated Space Background */
@@ -170,7 +178,7 @@ body {
 }
 
 .bot-message::before {
-    content: "Bot: ";
+    content: "Astra: ";
     font-weight: bold;
 }
 

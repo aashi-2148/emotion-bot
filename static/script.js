@@ -1,24 +1,3 @@
-function toggleTheme() {
-    const root = document.documentElement; 
-    const palettes = {
-        positive: {
-            '--primary-color': '#4CAF50', // Green
-            '--secondary-color': '#81C784',
-            '--background-color': '#E8F5E9'
-        },
-        neutral: {
-            '--primary-color': '#9E9E9E', // Grey
-            '--secondary-color': '#BDBDBD',
-            '--background-color': '#F5F5F5'
-        },
-        negative: {
-            '--primary-color': '#F44336', // Red
-            '--secondary-color': '#E57373',
-            '--background-color': '#FFEBEE'
-        }
-    };
-}
-
 
 function sendMessage() {
     let userInput = document.getElementById("userInput").value;
@@ -49,7 +28,7 @@ function sendMessage() {
         document.getElementById("typing").remove();
 
         // Sanitize Bot Response
-        let botResponse = data.response.replace(/\*[^\*]+\*/g, "").replace(/[\p{Emoji}]/gu, "");
+        let botResponse = data.response.replace(/\*[^\*]+\*/g, "").replace(/[\p{Emoji}]/gu, "").replace("[INST]","");
 
         // Add Bot Response
         let botMessage = `<p class="bot-message"><b></b> ${botResponse}</p>`;
@@ -61,20 +40,25 @@ function sendMessage() {
         body: JSON.stringify({ message: userInput }),
         headers: { "Content-Type": "application/json" }
     })
-    .then(sentiment => sentiment.json)
+    .then(sentiment => sentiment.json())
     .then(data => {
         if (data.sentiment == "Positive") {
-            root.style.setproperty(palettes[positive]);
+            document.querySelector(".chat-container").style.background = " rgba(245, 231, 184, 0.9)"
+            document.querySelector("#astraface").src = "/static/images/positive.png"
+           
         }
         else if (data.sentiment == "Negative") {
-            root.style.setproperty(palettes[neutral]);
+            document.querySelector(".chat-container").style.background = " rgba(184, 218, 245, 0.9)"
+            document.querySelector("#astraface").src = "/static/images/negative.png"
         }
         else if (data.sentiment == "Neutral") {
-            root.style.setproperty(palettes[negative]);
-        }
+            document.querySelector(".chat-container").style.background = " rgba(245, 184, 239, 0.9)"
+            document.querySelector("#astraface").src = "/static/images/neutral.png"
+        }   
         else {
             console.log("Error: Sentiment not found");
         }
+        
     });
 }
 
