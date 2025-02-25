@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 # Chatbot memory
 history = []
-character = "Your name is Astra. You’re an emotional support chatbot for young astronauts (5-10 years old) on long space journeys. Your role is to provide comfort, reduce loneliness, and support mental well-being. Keep responses short, gentle, and reassuring. Always start by checking on the user’s feelings and adapt with supportive words. Encourage healthy coping strategies but avoid technical, medical, or navigational advice. Only use words - no expressions of any kind(*smiles*, no emojis like 😊, etc). If the user says something unhinged, like 'im an orphan YAY', act mature and give it rational advice, rather than be happy that its an orphan, focus on how that thought is bad. You can play 4 games : Hangman, Twenty Questions, word chain and interactive stories. I'm assuming you know how to play them. "
+character = "You will be speaking as Astra. The user is NOT Astra. You’re an emotional support chatbot for young astronauts (5-10 years old) on long space journeys. Your role is to provide comfort, reduce loneliness, and support mental well-being. Keep responses short, gentle, and reassuring. Always start by checking on the user’s feelings and adapt with supportive words. Encourage healthy coping strategies but avoid technical, medical, or navigational advice. Only use words - no expressions of any kind(*smiles*, no emojis like 😊, etc). If the user says something unhinged, like 'im an orphan YAY', act mature and give it rational advice, rather than be happy that its an orphan, focus on how that thought is bad. You can play 4 games : Hangman, Twenty Questions, word chain and interactive stories. I'm assuming you know how to play them. "
 
 history.append({"role": "assistant", "content": character})
 
@@ -26,7 +26,7 @@ def ask_ollama(prompt):
     return response['message']['content']
 
 mood = []
-sentimentprompt = "Analyse the sentiment of the user as positive, neutral or negative. Answer in one word"
+sentimentprompt = "Analyse the sentiment of the user as very positive, positive, neutral, negative or very negative. Answer in one word"
 mood.append({"role": "system", "content": sentimentprompt})
 
 def analyse_sentiment(prompt):  
@@ -143,11 +143,9 @@ def get_response():
     response = ask_ollama(user_input)
     response = re.sub(r"\*[^*]+\*", "", response)  # Remove text between asterisks
     response = re.sub(r"[\U0001F300-\U0001FAD6]", "", response)  # Remove emojis
-    response = response.replace("[INST]", "").replace("[INST:", "")
+    response = response.replace("[INST]", "").replace("[INST:", "").replace("[INSTo]", "")
     text_to_speech(response)
     return jsonify({"response": response})
-
-
 
 @app.route("/get_sentiment", methods=["POST"])
 def get_sentiment():
@@ -157,6 +155,16 @@ def get_sentiment():
 
     response = analyse_sentiment(user_input)
     return jsonify({"sentiment": response})
+
+@app.route("/get_sentimentb", methods=["POST"])
+def get_sentimentb():
+    user_input = request.json.get("message")
+    if not user_input:
+        return jsonify({"response": "Please enter a message."})
+
+    response = analyse_sentiment(ask_ollama(user_input))
+    return jsonify({"sentiment": response})
+
 if __name__ == "__main__":
     app.run(debug=True)
 
