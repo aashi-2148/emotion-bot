@@ -104,7 +104,7 @@ body {
     position: absolute;
     width: 80px;
     height: 80px;
-    background: url('spaceship.png') no-repeat center center; /* Add a spaceship image */
+    background: url('images/spaceship.png') no-repeat center center; /* Add a spaceship image */
     background-size: contain;
     top: 0;
     left: 0;
@@ -198,4 +198,38 @@ button {
 button:hover {
     background: var(--button-hover);
     color: var(--dark-color);
+}
+a {
+    width: 180px;
+    height: 50px;
+    font-size: 20;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary-color);
+    color: var(--light-color);
+    cursor: pointer;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background 0.3s ease;
+    margin: 20;
+    text-decoration: none;
+}
+
+a:hover {
+    background: var(--button-hover);
+    color: var(--dark-color);
+}
+p {
+    font-size: 16px;
+    margin: 10px 0;
+    padding-bottom:30px;
+    color : #0f3460;
+
+}
+h1 {
+    font-size: 40px;
+    margin-top: 20px;
+    font-family:"Orbitron";
+    color : #0f3460;
 }
