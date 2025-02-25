@@ -126,6 +126,10 @@ def text_to_speech(ai_generated_response):
 def home():
     return render_template("index.html")
 
+@app.route("/bot")
+def home():
+    return render_template("bot.html")
+
 @app.route("/get_response", methods=["POST"])
 def get_response():
     user_input = request.json.get("message")
