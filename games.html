@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASTROBOT</title>
+    <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="planet"></div>
+    <div class="spaceship"></div>
+    <div class="chat-container">
+        <h1>ASTROBOT</h1>
+        <h2>Play some games!</h2>
+        <button onclick="hangman()">Hangman</button>
+        <button onclick="interactiveStory()">Interactive Story</button>
+        <button onclick="wordChain()">Word Chain</button>
+        <button onclick="twentyQuestions()">20 Questions</button>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
